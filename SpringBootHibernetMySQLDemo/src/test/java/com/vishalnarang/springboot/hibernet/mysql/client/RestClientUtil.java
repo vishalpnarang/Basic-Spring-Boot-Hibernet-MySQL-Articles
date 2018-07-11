@@ -1,4 +1,5 @@
 package com.vishalnarang.springboot.hibernet.mysql.client;
+
 import java.net.URI;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -6,8 +7,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
 import com.vishalnarang.springboot.hibernet.mysql.entity.Article;
+
 public class RestClientUtil {
+	
     public void getArticleByIdDemo() {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
@@ -19,6 +23,7 @@ public class RestClientUtil {
         System.out.println("Id:"+article.getArticleId()+", Title:"+article.getTitle()
                  +", Category:"+article.getCategory());      
     }
+    
     public void getAllArticlesDemo() {
 	HttpHeaders headers = new HttpHeaders();
 	headers.setContentType(MediaType.APPLICATION_JSON);
@@ -32,6 +37,7 @@ public class RestClientUtil {
                       +", Category: "+article.getCategory());
         }
     }
+    
     public void addArticleDemo() {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
@@ -44,6 +50,7 @@ public class RestClientUtil {
         URI uri = restTemplate.postForLocation(url, requestEntity);
         System.out.println(uri.getPath());    	
     }
+    
     public void updateArticleDemo() {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
@@ -56,6 +63,7 @@ public class RestClientUtil {
         HttpEntity<Article> requestEntity = new HttpEntity<Article>(objArticle, headers);
         restTemplate.put(url, requestEntity);
     }
+    
     public void deleteArticleDemo() {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
@@ -64,10 +72,11 @@ public class RestClientUtil {
         HttpEntity<Article> requestEntity = new HttpEntity<Article>(headers);
         restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, Void.class, 4);        
     }
+    
     public static void main(String args[]) {
-    	RestClientUtil util = new RestClientUtil();
+    	//RestClientUtil util = new RestClientUtil();
         //util.getArticleByIdDemo();
-    	util.getAllArticlesDemo();
+    	//util.getAllArticlesDemo();
     	//util.addArticleDemo();
     	//util.updateArticleDemo();
     	//util.deleteArticleDemo();
